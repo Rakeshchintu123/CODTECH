@@ -1,0 +1,3 @@
+mkdir git-merge-conflict-demo
+cd git-merge-conflict-demo
+git init
