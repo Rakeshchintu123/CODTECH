@@ -1,0 +1,6 @@
+mkdir git-merge-conflict-demo
+cd git-merge-conflict-demo
+git init
+echo "Hello, this is the main branch." > file.txt
+git add file.txt
+git commit -m "Initial commit on main with file.txt"
