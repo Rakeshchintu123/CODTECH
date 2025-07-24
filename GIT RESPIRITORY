@@ -1,3 +1,30 @@
 mkdir git-merge-conflict-demo
 cd git-merge-conflict-demo
 git init
+echo "Line 1" > file.txt
+git add file.txt
+git commit -m "Initial commit"
+git checkout -b feature-a
+echo "Feature A line" >> file.txt
+git commit -am "Add line in feature-a"
+
+git checkout main
+git checkout -b feature-b
+echo "Feature B line" >> file.txt
+git commit -am "Add line in feature-b"
+git checkout main
+git merge feature-a
+# No conflict yet because feature-a added a line after Line 1
+git merge feature-b
+Auto-merging file.txt
+CONFLICT (content): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+Line 1
+<<<<<<< HEAD
+Feature A line
+=======
+Feature B line
+>>>>>>> feature-b
+git add file.txt
+git commit -m "Resolve merge conflict between feature-a and feature-b"
+git log --oneline --graph --all
